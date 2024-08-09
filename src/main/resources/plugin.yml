@@ -4,3 +4,7 @@ main: info.preva1l.customenchants.CustomEnchants
 api-version: '1.20'
 authors: [Preva1l]
 description: Custom Enchants for 49lifes.
+
+permissions:
+  custom-enchants.use:
+    default: true

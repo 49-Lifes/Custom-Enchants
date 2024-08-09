@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
 public class ImpactDrillEnchant extends CustomEnchant {
     @Override
     public void trigger(Player player, ItemStack enchantedItem, Event var1) {
-        if (!(var1 instanceof BlockBreakEvent event)) throw new IllegalCallerException("ImpactDrillEnchant must be called from a BlockBreakEvent");
+        if (!(var1 instanceof BlockBreakEvent event)) return;
 
         event.getBlock();
     }

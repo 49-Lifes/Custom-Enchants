@@ -10,8 +10,8 @@ import java.util.List;
 
 @Getter
 public abstract class BasicSubCommand {
-    public CustomEnchants plugin;
     private final Command info;
+    public CustomEnchants plugin;
 
     public BasicSubCommand(CustomEnchants plugin) {
         this.plugin = plugin;

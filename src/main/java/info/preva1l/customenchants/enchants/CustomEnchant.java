@@ -8,7 +8,8 @@ public abstract class CustomEnchant implements NotSoCustomEnchant {
 
     protected CustomEnchant() {
         this.enchantInfo = this.getClass().getAnnotation(EnchantInfo.class);
-        if (enchantInfo == null) throw new RuntimeException("Enchant %s constructor must be annotated with @EnchantInfo".formatted(this.getClass().getSimpleName()));
+        if (enchantInfo == null)
+            throw new RuntimeException("Enchant %s constructor must be annotated with @EnchantInfo".formatted(this.getClass().getSimpleName()));
     }
 
     @Override

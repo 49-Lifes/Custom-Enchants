@@ -16,10 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
 
 @EnchantInfo(
         id = "impact_drill",
@@ -33,8 +30,6 @@ public class ImpactDrillEnchant extends CustomEnchant {
     private static final int LEVEL_TWO_RADIUS = 2;
     private static final List<Material> BLACKLISTED_BLOCKS = List.of(Material.BEDROCK, Material.BARRIER, Material.COMMAND_BLOCK);
 
-    private final Map<UUID, Boolean> triggeredAlready = new ConcurrentHashMap<>();
-
     @Override
     public void trigger(Player player, ItemStack enchantedItem, Event var1) {
         if (!(var1 instanceof BlockBreakEvent event)) return;
@@ -46,9 +41,12 @@ public class ImpactDrillEnchant extends CustomEnchant {
         event.setCancelled(true);
 
         int radius = switch (level) {
-            case 1: yield LEVEL_ONE_RADIUS;
-            case 2: yield LEVEL_TWO_RADIUS;
-            default: throw new IllegalStateException("Impact Drill Max Level is %s".formatted(getMaxLevel()));
+            case 1:
+                yield LEVEL_ONE_RADIUS;
+            case 2:
+                yield LEVEL_TWO_RADIUS;
+            default:
+                throw new IllegalStateException("Impact Drill Max Level is %s".formatted(getMaxLevel()));
         };
 
         getCube(blockLocation, radius).thenAccept(cube -> drill(cube, enchantedItem));

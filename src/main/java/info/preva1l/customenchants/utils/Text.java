@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 @UtilityClass
 public class Text {
+    private final Pattern HEX_PATTERN = Pattern.compile("&#(\\w{5}[0-9a-fA-F])");
+
     /**
      * Colorize a list. (Useful for lore)
      *
@@ -26,6 +28,7 @@ public class Text {
 
     /**
      * Converts MiniMessage to legacy colour codes.
+     *
      * @param message message with mini message formatting
      * @return string with legacy formatting (not colorized)
      */
@@ -71,11 +74,9 @@ public class Text {
         return message.replaceAll("<#[a-fA-F0-9]{6}>", code);
     }
 
-
-    private final Pattern HEX_PATTERN = Pattern.compile("&#(\\w{5}[0-9a-fA-F])");
-
     /**
      * Colorize  a string.
+     *
      * @param text String with color codes or hex codes.
      * @return Colorized String
      */
@@ -84,7 +85,7 @@ public class Text {
         Matcher matcher = HEX_PATTERN.matcher(text);
         StringBuilder buffer = new StringBuilder();
 
-        while(matcher.find()) {
+        while (matcher.find()) {
             matcher.appendReplacement(buffer, ChatColor.of("#" + matcher.group(1)).toString());
         }
 

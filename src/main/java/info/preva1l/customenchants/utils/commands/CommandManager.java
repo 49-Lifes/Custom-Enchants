@@ -27,14 +27,39 @@ public class CommandManager {
         this.loadedCommands = new ArrayList<>();
     }
 
+    public static CommandManager getInstance() {
+        if (instance == null) {
+            instance = new CommandManager(CustomEnchants.getInstance());
+        }
+        return instance;
+    }
+
     /**
      * Register a new command.
+     *
      * @param basicCommand the command.
      */
     public void registerCommand(BasicCommand basicCommand) {
         CommandMapUtil.getCommandMap(plugin.getServer()).register("customenchants", new CommandExecutor(basicCommand));
         loadedCommands.add(basicCommand);
         CustomEnchants.getInstance().getLogger().info(String.format("Registered Command %s", basicCommand.getInfo().name()));
+    }
+
+    /**
+     * Remove the first element of the args array.
+     *
+     * @param array args
+     * @return args - 1st element
+     */
+    protected String[] removeFirstElement(String[] array) {
+        if (array == null || array.length == 0) {
+            return new String[]{};
+        }
+
+        String[] newArray = new String[array.length - 1];
+        System.arraycopy(array, 1, newArray, 0, array.length - 1);
+
+        return newArray;
     }
 
     public class CommandExecutor extends BukkitCommand {
@@ -114,28 +139,5 @@ public class CommandManager {
             StringUtil.copyPartialMatches(args[args.length - 1], ret, completors);
             return completors;
         }
-    }
-
-    /**
-     * Remove the first element of the args array.
-     * @param array args
-     * @return args - 1st element
-     */
-    protected String[] removeFirstElement(String[] array) {
-        if (array == null || array.length == 0) {
-            return new String[]{};
-        }
-
-        String[] newArray = new String[array.length - 1];
-        System.arraycopy(array, 1, newArray, 0, array.length - 1);
-
-        return newArray;
-    }
-
-    public static CommandManager getInstance() {
-        if (instance == null) {
-            instance = new CommandManager(CustomEnchants.getInstance());
-        }
-        return instance;
     }
 }

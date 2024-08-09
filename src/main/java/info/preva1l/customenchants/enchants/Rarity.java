@@ -7,8 +7,8 @@ import org.bukkit.Material;
 @Getter
 @AllArgsConstructor
 public enum Rarity {
-    COMMON("&7",  "Common", Material.LIGHT_GRAY_DYE),
-    UNCOMMON("&a","Uncommon", Material.LIME_DYE),
+    COMMON("&7", "Common", Material.LIGHT_GRAY_DYE),
+    UNCOMMON("&a", "Uncommon", Material.LIME_DYE),
     RARE("&9", "Rare", Material.CYAN_DYE),
     EPIC("&5", "Epic", Material.PURPLE_DYE),
     LEGENDARY("&6", "Legendary", Material.ORANGE_DYE),

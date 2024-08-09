@@ -13,11 +13,10 @@ import java.util.List;
 
 public abstract class PaginatedFastInv extends FastInv {
     protected final Player player;
-
+    private final List<PaginatedItem> paginatedItems = new ArrayList<>();
     protected int page = 0;
     protected int index = 0;
     private List<Integer> paginationMappings;
-    private final List<PaginatedItem> paginatedItems = new ArrayList<>();
 
     protected PaginatedFastInv(int size, @NotNull String title, @NotNull Player player) {
         super(size, title);

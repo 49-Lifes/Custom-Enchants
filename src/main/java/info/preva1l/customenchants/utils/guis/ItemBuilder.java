@@ -1,7 +1,6 @@
 package info.preva1l.customenchants.utils.guis;
 
 import com.google.common.collect.Multimap;
-import net.md_5.bungee.api.chat.hover.content.Item;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -164,9 +163,10 @@ public class ItemBuilder {
         return removeFlags(ItemFlag.values());
     }
 
-    public ItemBuilder setAttributes(Multimap<Attribute,AttributeModifier> map){
+    public ItemBuilder setAttributes(Multimap<Attribute, AttributeModifier> map) {
         return meta(meta -> meta.setAttributeModifiers(map));
     }
+
     public ItemBuilder addAttribute(Attribute attribute, AttributeModifier value) {
         return meta(meta -> meta.addAttributeModifier(attribute, value));
     }

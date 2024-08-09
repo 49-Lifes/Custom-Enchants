@@ -1,7 +1,6 @@
 package info.preva1l.customenchants.listeners;
 
 import info.preva1l.customenchants.EnchantManager;
-import info.preva1l.customenchants.enchants.CustomEnchant;
 import info.preva1l.customenchants.enchants.NotSoCustomEnchant;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Material;

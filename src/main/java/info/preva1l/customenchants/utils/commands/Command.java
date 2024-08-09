@@ -11,8 +11,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Command {
     @NotNull String name();
+
     @NotNull String permission() default "";
+
     @NotNull String[] aliases() default {};
+
     boolean inGameOnly() default true;
+
     boolean async() default false;
 }

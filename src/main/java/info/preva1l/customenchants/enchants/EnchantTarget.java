@@ -28,9 +28,9 @@ public enum EnchantTarget {
                     || material == Material.DIAMOND_SWORD
                     || material == Material.NETHERITE_SWORD;
         }
-    }
-    ;
+    };
 
     private final String friendlyName;
+
     public abstract boolean shouldApply(Material material);
 }

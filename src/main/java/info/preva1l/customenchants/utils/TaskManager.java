@@ -14,6 +14,7 @@ public final class TaskManager {
     public class Sync {
         /**
          * Run a synchronous task once. Helpful when needing to run some sync code in an async loop
+         *
          * @param runnable The runnable, lambda supported yeh
          */
         public void run(Runnable runnable) {
@@ -22,6 +23,7 @@ public final class TaskManager {
 
         /**
          * Run a synchronous task forever with a delay between runs.
+         *
          * @param runnable The runnable, lambda supported yeh
          * @param interval Time between each run
          */
@@ -31,8 +33,9 @@ public final class TaskManager {
 
         /**
          * Run a synchronous task once with a delay. Helpful when needing to run some sync code in an async loop
+         *
          * @param runnable The runnable, lambda supported yeh
-         * @param delay Time before running.
+         * @param delay    Time before running.
          */
         public void runLater(Runnable runnable, long delay) {
             CustomEnchants.getInstance().getServer().getScheduler().runTaskLater(CustomEnchants.getInstance(), runnable, delay);
@@ -46,6 +49,7 @@ public final class TaskManager {
     public class Async {
         /**
          * Run an asynchronous task once. Helpful when needing to run some sync code in an async loop
+         *
          * @param runnable The runnable, lambda supported yeh
          */
         public void run(Runnable runnable) {
@@ -54,6 +58,7 @@ public final class TaskManager {
 
         /**
          * Run an asynchronous task forever with a delay between runs.
+         *
          * @param runnable The runnable, lambda supported yeh
          * @param interval Time between each run
          */
@@ -63,8 +68,9 @@ public final class TaskManager {
 
         /**
          * Run an asynchronous task once with a delay. Helpful when needing to run some sync code in an async loop
+         *
          * @param runnable The runnable, lambda supported yeh
-         * @param delay Time before running.
+         * @param delay    Time before running.
          */
         public void runLater(Runnable runnable, long delay) {
             CustomEnchants.getInstance().getServer().getScheduler().runTaskLaterAsynchronously(CustomEnchants.getInstance(), runnable, delay);

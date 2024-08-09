@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.github.goooler.shadow' version '8.1.7'
 }
 
 group = 'info.preva1l'
@@ -15,10 +16,13 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven { url 'https://repo.clojars.org/' }
 }
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT"
+
+    implementation "com.github.puregero:multilib:1.2.3" // Folia & ShreddedPaper Support
 
     compileOnly 'org.jetbrains:annotations:24.0.0'
     compileOnly 'org.projectlombok:lombok:1.18.32'
@@ -52,3 +56,13 @@ processResources {
         expand props
     }
 }
+
+shadowJar {
+    relocate 'com.github.puregero.multilib', 'info.preva1l.customenchants.libs.multilib'
+
+    minimize()
+
+    archiveClassifier.set('')
+}
+
+build.dependsOn shadowJar

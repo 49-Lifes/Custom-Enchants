@@ -2,7 +2,9 @@ package info.preva1l.customenchants.listeners;
 
 import info.preva1l.customenchants.EnchantManager;
 import info.preva1l.customenchants.enchants.CustomEnchant;
+import info.preva1l.customenchants.enchants.NotSoCustomEnchant;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
@@ -21,8 +23,9 @@ public class ApplyListener implements Listener {
         ItemStack clickedItem = e.getCurrentItem();
         Inventory inventory = e.getClickedInventory();
         if (itemInCursor == null || clickedItem == null || inventory == null) return;
-        if (enchantManager.isEnchantApplier(itemInCursor)) return;
-        CustomEnchant enchant = enchantManager.getEnchantFromApplier(itemInCursor);
+        if (itemInCursor.getType() == Material.AIR || clickedItem.getType() == Material.AIR) return;
+        if (!enchantManager.isEnchantApplier(itemInCursor)) return;
+        NotSoCustomEnchant enchant = enchantManager.getEnchantFromApplier(itemInCursor);
 
         if (!enchantManager.canApplyToItem(enchant, clickedItem)) return;
 

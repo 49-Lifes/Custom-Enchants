@@ -1,6 +1,6 @@
 package info.preva1l.customenchants;
 
-import info.preva1l.customenchants.enchants.CustomEnchant;
+import info.preva1l.customenchants.enchants.NotSoCustomEnchant;
 import info.preva1l.customenchants.utils.Text;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Material;
@@ -10,23 +10,23 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 @UtilityClass
-public class EnchantFactory {
+public class EnchantItemsFactory {
     @SuppressWarnings("deprecation")
-    public ItemStack createEnchantApplier(CustomEnchant enchant, int level) {
+    public ItemStack createEnchantApplier(NotSoCustomEnchant enchant, int level) {
         String displayName = Text.colorize(enchant.getRarity().getColour() + enchant.getName());
         List<String> lore = List.of(
                 "&fLevel: " + level,
                 "",
                 "&7Applies To: " + enchant.targetString(),
                 "",
-                enchant.getRarity().getFriendlyName() + " Rune"
+                "&l" + enchant.getRarity().getFriendlyName() + " Rune"
         );
 
         ItemStack itemStack = new ItemStack(Material.ENCHANTED_BOOK);
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(displayName);
-        itemMeta.setLore(lore);
+        itemMeta.setLore(Text.colorizeList(lore));
         itemStack.setItemMeta(itemMeta);
-        return itemStack;
+        return EnchantManager.getInstance().addPdcToApplier(enchant, level, itemStack);
     }
 }

@@ -5,6 +5,7 @@ import info.preva1l.customenchants.enchants.impl.boots.HermesWingsEnchant;
 import info.preva1l.customenchants.enchants.impl.helmet.CatEyesEnchant;
 import info.preva1l.customenchants.enchants.impl.leggings.PartyPantsEnchant;
 import info.preva1l.customenchants.enchants.impl.pickaxe.ImpactDrillEnchant;
+import info.preva1l.customenchants.enchants.impl.tools.TelekinesisEnchant;
 import info.preva1l.customenchants.events.PassiveEnchantTriggerEvent;
 import info.preva1l.customenchants.events.PassiveType;
 import info.preva1l.customenchants.listeners.ApplyListener;
@@ -40,7 +41,8 @@ public final class CustomEnchants extends JavaPlugin {
                 new ImpactDrillEnchant(),
                 new CatEyesEnchant(),
                 new HermesWingsEnchant(),
-                new PartyPantsEnchant()
+                new PartyPantsEnchant(),
+                new TelekinesisEnchant()
         ).forEach(EnchantManager.getInstance()::registerEnchant);
 
         Stream.of(

@@ -47,15 +47,21 @@ public class ImpactDrillEnchant extends CustomEnchant {
                 throw new IllegalStateException("Impact Drill Max Level is %s".formatted(getMaxLevel()));
         };
 
-        getCube(blockLocation, radius).thenAccept(cube -> drill(cube, enchantedItem));
+        getCube(blockLocation, radius).thenAccept(cube -> drill(cube, enchantedItem, player));
     }
 
-    private void drill(List<Location> cube, ItemStack tool) {
+    private void drill(List<Location> cube, ItemStack tool, Player player) {
         TaskManager.Sync.run(() -> {
             for (Location location : cube) {
                 Block block = location.getWorld().getBlockAt(location);
                 if (BLACKLISTED_BLOCKS.contains(block.getType())) continue;
-                block.breakNaturally(tool);
+                BlockBreakEvent event = new BlockBreakEvent(block, player);
+                EnchantManager.getInstance().getEnchants().get("telekinesis").trigger(player, tool, event);
+                if (event.isDropItems()) {
+                    block.breakNaturally(tool);
+                } else {
+                    block.setType(Material.AIR);
+                }
             }
         });
     }

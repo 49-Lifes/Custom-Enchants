@@ -7,6 +7,28 @@ import org.bukkit.Material;
 @AllArgsConstructor
 @Getter
 public enum EnchantTarget {
+    SHOVEL("Shovels") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.WOODEN_SHOVEL
+                    || material == Material.STONE_SHOVEL
+                    || material == Material.IRON_SHOVEL
+                    || material == Material.GOLDEN_SHOVEL
+                    || material == Material.DIAMOND_SHOVEL
+                    || material == Material.NETHERITE_SHOVEL;
+        }
+    },
+    HOE("Hoes") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.WOODEN_HOE
+                    || material == Material.STONE_HOE
+                    || material == Material.IRON_HOE
+                    || material == Material.GOLDEN_HOE
+                    || material == Material.DIAMOND_HOE
+                    || material == Material.NETHERITE_HOE;
+        }
+    },
     PICKAXE("Pickaxes") {
         @Override
         public boolean shouldApply(Material material) {
@@ -16,6 +38,17 @@ public enum EnchantTarget {
                     || material == Material.GOLDEN_PICKAXE
                     || material == Material.DIAMOND_PICKAXE
                     || material == Material.NETHERITE_PICKAXE;
+        }
+    },
+    AXE("Axes") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.WOODEN_AXE
+                    || material == Material.STONE_AXE
+                    || material == Material.IRON_AXE
+                    || material == Material.GOLDEN_AXE
+                    || material == Material.DIAMOND_AXE
+                    || material == Material.NETHERITE_AXE;
         }
     },
     SWORD("Swords") {

@@ -29,7 +29,7 @@ public class PartyPantsEnchant extends CustomEnchant {
         player.setGlowing(true);
         TaskManager.Sync.runLater(() -> {
             ItemStack itemStack = player.getInventory().getLeggings();
-            if (itemStack != null && (itemStack.getType() == Material.AIR || !EnchantManager.getInstance().hasEnchant(itemStack, this))) {
+            if (itemStack == null || itemStack.getType() == Material.AIR || !EnchantManager.getInstance().hasEnchant(itemStack, this)) {
                 player.setGlowing(false);
             }
         }, 20 * 3);

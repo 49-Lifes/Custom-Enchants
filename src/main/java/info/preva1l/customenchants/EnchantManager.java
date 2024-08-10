@@ -1,5 +1,6 @@
 package info.preva1l.customenchants;
 
+import info.preva1l.customenchants.enchants.EnchantReference;
 import info.preva1l.customenchants.enchants.EnchantTarget;
 import info.preva1l.customenchants.enchants.NotSoCustomEnchant;
 import lombok.Getter;
@@ -23,7 +24,11 @@ public class EnchantManager {
     private static final String PDC_FORMAT = "%enchant%:%level%";
     private final NamespacedKey enchantApplierKey;
 
-    @Getter private Map<String, NotSoCustomEnchant> enchants = new ConcurrentHashMap<>();
+    /**
+     * Stores a map of enchant Name to ID
+     */
+    @Getter private final Map<String, String> enchantIdsCache = new ConcurrentHashMap<>();
+    @Getter private final Map<String, NotSoCustomEnchant> enchants = new ConcurrentHashMap<>();
 
     private EnchantManager(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -67,11 +72,22 @@ public class EnchantManager {
 
         itemMeta.getPersistentDataContainer().set(getNamespacedKey(customEnchant), PersistentDataType.STRING, getDataString(customEnchant, level));
         itemStack.setItemMeta(itemMeta);
-        return itemStack;
+        return LoreHandler.getInstance().addCustomEnchant(itemStack, customEnchant, level);
     }
 
     public void registerEnchant(NotSoCustomEnchant enchant) {
         enchants.put(enchant.getId(), enchant);
+    }
+
+    public List<EnchantReference> getEnchantRefs(ItemStack itemStack) {
+        List<EnchantReference> customEnchants = new ArrayList<>();
+        if (itemStack.getItemMeta() == null) return customEnchants;
+        PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
+        for (NotSoCustomEnchant enchant : enchants.values()) {
+            NamespacedKey key = getNamespacedKey(enchant);
+            if (pdc.has(key)) customEnchants.add(new EnchantReference(enchant, getLevelFromData(pdc.get(key, PersistentDataType.STRING))));
+        }
+        return customEnchants;
     }
 
     public List<NotSoCustomEnchant> getEnchants(ItemStack itemStack) {

@@ -99,6 +99,7 @@ public class Text {
      * @return String without color codes.
      */
     public String removeColorCodes(String str) {
+        str = str.replaceAll(HEX_PATTERN.pattern(), "");
         return str.replaceAll("&(?! ).", "");
     }
 }

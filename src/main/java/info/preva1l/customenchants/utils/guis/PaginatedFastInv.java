@@ -1,11 +1,8 @@
 package info.preva1l.customenchants.utils.guis;
 
-import info.preva1l.customenchants.CustomEnchants;
 import info.preva1l.customenchants.utils.Text;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -25,18 +22,12 @@ public abstract class PaginatedFastInv extends FastInv {
                 10, 11, 12, 13, 14, 15, 16, 19, 20,
                 21, 22, 23, 24, 25, 28, 29, 30,
                 31, 32, 33, 34);
-
-        BukkitTask task = Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(CustomEnchants.getInstance(), this::updatePagination, 20L, 20L);
-        InventoryEventHandler.tasksToQuit.put(getInventory(), task);
     }
 
     protected PaginatedFastInv(int size, @NotNull String title, @NotNull Player player, @NotNull List<Integer> paginationMappings) {
         super(size, title);
         this.player = player;
         this.paginationMappings = paginationMappings;
-
-        BukkitTask task = Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(CustomEnchants.getInstance(), this::updatePagination, 20L, 20L);
-        InventoryEventHandler.tasksToQuit.put(getInventory(), task);
     }
 
     protected void setPaginationMappings(List<Integer> list) {

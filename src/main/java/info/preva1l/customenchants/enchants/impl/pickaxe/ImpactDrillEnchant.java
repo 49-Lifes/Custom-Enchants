@@ -1,4 +1,4 @@
-package info.preva1l.customenchants.enchants.impl;
+package info.preva1l.customenchants.enchants.impl.pickaxe;
 
 import info.preva1l.customenchants.EnchantManager;
 import info.preva1l.customenchants.enchants.CustomEnchant;
@@ -37,8 +37,6 @@ public class ImpactDrillEnchant extends CustomEnchant {
         int level = EnchantManager.getInstance().getLevelFromItemStack(this, enchantedItem);
 
         Location blockLocation = event.getBlock().getLocation();
-
-        event.setCancelled(true);
 
         int radius = switch (level) {
             case 1:

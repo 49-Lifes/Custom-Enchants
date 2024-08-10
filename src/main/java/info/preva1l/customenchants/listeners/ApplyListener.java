@@ -28,6 +28,8 @@ public class ApplyListener implements Listener {
 
         if (!enchantManager.canApplyToItem(enchant, clickedItem)) return;
 
+        e.setCancelled(true);
+
         clickedItem = enchantManager.applyEnchant(enchant, enchantManager.getLevelFromApplier(itemInCursor), clickedItem);
         inventory.setItem(e.getSlot(), clickedItem);
         e.getView().setCursor(null);

@@ -28,6 +28,36 @@ public enum EnchantTarget {
                     || material == Material.DIAMOND_SWORD
                     || material == Material.NETHERITE_SWORD;
         }
+    },
+    HELMET("Helmets") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.LEATHER_HELMET
+                    || material == Material.IRON_HELMET
+                    || material == Material.GOLDEN_HELMET
+                    || material == Material.DIAMOND_HELMET
+                    || material == Material.NETHERITE_HELMET;
+        }
+    },
+    LEGGINGS("Leggings") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.LEATHER_LEGGINGS
+                    || material == Material.IRON_LEGGINGS
+                    || material == Material.GOLDEN_LEGGINGS
+                    || material == Material.DIAMOND_LEGGINGS
+                    || material == Material.NETHERITE_LEGGINGS;
+        }
+    },
+    BOOTS("Boots") {
+        @Override
+        public boolean shouldApply(Material material) {
+            return material == Material.LEATHER_BOOTS
+                    || material == Material.IRON_BOOTS
+                    || material == Material.GOLDEN_BOOTS
+                    || material == Material.DIAMOND_BOOTS
+                    || material == Material.NETHERITE_BOOTS;
+        }
     };
 
     private final String friendlyName;

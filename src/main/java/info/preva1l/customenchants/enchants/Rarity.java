@@ -7,12 +7,12 @@ import org.bukkit.Material;
 @Getter
 @AllArgsConstructor
 public enum Rarity {
-    COMMON("&7", "Common", Material.LIGHT_GRAY_DYE),
-    UNCOMMON("&a", "Uncommon", Material.LIME_DYE),
-    RARE("&9", "Rare", Material.CYAN_DYE),
-    EPIC("&5", "Epic", Material.PURPLE_DYE),
-    LEGENDARY("&6", "Legendary", Material.ORANGE_DYE),
-    LIMITED("&d", "Limited Edition", Material.PINK_DYE),
+    COMMON("&7", "COMMON", Material.LIGHT_GRAY_DYE),
+    UNCOMMON("&a", "UNCOMMON", Material.LIME_DYE),
+    RARE("&9", "RARE", Material.CYAN_DYE),
+    EPIC("&5", "EPIC", Material.PURPLE_DYE),
+    LEGENDARY("&6", "LEGENDARY", Material.ORANGE_DYE),
+    LIMITED("&d", "LIMITED EDITION", Material.PINK_DYE),
     ;
 
     private final String colour;

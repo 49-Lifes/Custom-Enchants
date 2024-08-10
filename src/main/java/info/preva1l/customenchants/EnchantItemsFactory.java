@@ -3,7 +3,6 @@ package info.preva1l.customenchants;
 import info.preva1l.customenchants.enchants.NotSoCustomEnchant;
 import info.preva1l.customenchants.utils.Text;
 import lombok.experimental.UtilityClass;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -19,10 +18,10 @@ public class EnchantItemsFactory {
                 "",
                 "&7Applies To: " + enchant.targetString(),
                 "",
-                "&l" + enchant.getRarity().getFriendlyName() + " Rune"
+                enchant.getRarity().getColour() + "&l" + enchant.getRarity().getFriendlyName() + " RUNE"
         );
 
-        ItemStack itemStack = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemStack itemStack = new ItemStack(enchant.getRarity().getMaterial());
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(displayName);
         itemMeta.setLore(Text.colorizeList(lore));

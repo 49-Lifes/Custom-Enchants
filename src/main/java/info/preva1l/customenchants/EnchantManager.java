@@ -30,6 +30,10 @@ public class EnchantManager {
         this.enchantApplierKey = new NamespacedKey(plugin, "custom_enchant");
     }
 
+    public boolean hasEnchant(ItemStack itemStack, NotSoCustomEnchant customEnchant) {
+        return getEnchants(itemStack).contains(customEnchant);
+    }
+
     public boolean canApplyToItem(NotSoCustomEnchant customEnchant, ItemStack itemStack) {
         for (EnchantTarget target : customEnchant.getTargets()) {
             if (target.shouldApply(itemStack.getType())) return true;

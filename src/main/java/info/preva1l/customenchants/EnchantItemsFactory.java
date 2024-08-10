@@ -25,6 +25,7 @@ public class EnchantItemsFactory {
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(displayName);
         itemMeta.setLore(Text.colorizeList(lore));
+        itemMeta.setCustomModelData(12);
         itemStack.setItemMeta(itemMeta);
         return EnchantManager.getInstance().addPdcToApplier(enchant, level, itemStack);
     }

@@ -47,11 +47,12 @@ public abstract class CustomEnchant implements NotSoCustomEnchant {
         int index = 1;
         for (EnchantTarget target : getTargets()) {
             stringBuilder.append(target.getFriendlyName());
-            if (index == targets.size()) {
+            if (index == targets.size() - 1) {
                 stringBuilder.append(" or ");
-            } else {
+            } else if (index != targets.size()) {
                 stringBuilder.append(", ");
             }
+            index++;
         }
         return stringBuilder.toString();
     }

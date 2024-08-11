@@ -16,6 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 @EnchantInfo(
         id = "heremes_wings",
         name = "Hermes Wings",
+        description = {"Grants you the power of great Hermes,", "swiftly move around with a speed buff."},
         rarity = Rarity.RARE,
         appliesTo = EnchantTarget.BOOTS,
         maxLevel = 3

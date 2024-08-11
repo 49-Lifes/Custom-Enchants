@@ -12,6 +12,8 @@ public @interface EnchantInfo {
 
     String name();
 
+    String[] description();
+
     Rarity rarity();
 
     EnchantTarget[] appliesTo();

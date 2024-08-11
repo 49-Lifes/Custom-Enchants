@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 @EnchantInfo(
         id = "party_pants",
         name = "Party Pants",
+        description = {"Get your disco on and GLOWWWW."},
         rarity = Rarity.LEGENDARY,
         appliesTo = EnchantTarget.LEGGINGS,
         maxLevel = 1

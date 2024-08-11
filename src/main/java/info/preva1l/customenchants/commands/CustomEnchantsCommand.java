@@ -2,10 +2,12 @@ package info.preva1l.customenchants.commands;
 
 import info.preva1l.customenchants.CustomEnchants;
 import info.preva1l.customenchants.commands.subcommands.AdminSubCommand;
+import info.preva1l.customenchants.menus.EnchantsRarityMenu;
 import info.preva1l.customenchants.utils.Text;
 import info.preva1l.customenchants.utils.commands.BasicCommand;
 import info.preva1l.customenchants.utils.commands.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class CustomEnchantsCommand extends BasicCommand {
     @Command(name = "custom-enchants", aliases = {"ce", "runes", "rune"}, permission = "custom-enchants.use")
@@ -22,6 +24,6 @@ public class CustomEnchantsCommand extends BasicCommand {
             return;
         }
 
-        sender.sendMessage("coming soon...");
+        new EnchantsRarityMenu().open((Player) sender);
     }
 }

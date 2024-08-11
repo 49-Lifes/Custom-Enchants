@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 @EnchantInfo(
         id = "cat_eyes",
         name = "Cat Eyes",
+        description = {"Just like a cat, you can see in the dark!"},
         rarity = Rarity.EPIC,
         appliesTo = EnchantTarget.HELMET,
         maxLevel = 1

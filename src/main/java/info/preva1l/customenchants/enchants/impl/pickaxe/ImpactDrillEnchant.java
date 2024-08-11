@@ -21,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 @EnchantInfo(
         id = "impact_drill",
         name = "Impact Drill",
+        description = {"Start your mining adventures", "with a large blast!"},
         rarity = Rarity.RARE,
         appliesTo = EnchantTarget.PICKAXE,
         maxLevel = 2

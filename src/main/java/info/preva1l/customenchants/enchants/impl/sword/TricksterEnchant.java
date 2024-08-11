@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 @EnchantInfo(
         id = "trickster",
         name = "Trickster",
+        description = {"Has a chance to scramble your", "opponents hotbar slots."},
         rarity = Rarity.RARE,
         appliesTo = EnchantTarget.SWORD,
         maxLevel = 4

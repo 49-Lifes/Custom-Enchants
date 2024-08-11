@@ -13,6 +13,8 @@ public interface NotSoCustomEnchant {
 
     String getName();
 
+    List<String> getDescription();
+
     List<EnchantTarget> getTargets();
 
     int getMaxLevel();

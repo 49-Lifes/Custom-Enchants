@@ -23,6 +23,11 @@ public abstract class CustomEnchant implements NotSoCustomEnchant {
     }
 
     @Override
+    public List<String> getDescription() {
+        return Arrays.stream(enchantInfo.description()).toList();
+    }
+
+    @Override
     public List<EnchantTarget> getTargets() {
         return Arrays.stream(enchantInfo.appliesTo()).toList();
     }

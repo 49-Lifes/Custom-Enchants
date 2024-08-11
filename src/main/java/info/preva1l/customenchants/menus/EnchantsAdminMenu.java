@@ -16,7 +16,7 @@ import java.util.List;
 public class EnchantsAdminMenu extends PaginatedFastInv {
     private static final ItemStack BORDER = new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE)
             .name(Text.colorize(""))
-            .lore(Text.colorize("dont.vote-preva1l.today")).build();
+            .lore(Text.colorize("&8dont.vote-preva1l.today")).build();
 
     private final List<NotSoCustomEnchant> enchants;
 

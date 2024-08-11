@@ -19,6 +19,7 @@ import java.util.Random;
 @EnchantInfo(
         id = "telekinesis",
         name = "Telekinesis",
+        description = {"Summon your magical powers to bring", "items towards your inventory."},
         rarity = Rarity.EPIC,
         appliesTo = {EnchantTarget.PICKAXE, EnchantTarget.AXE, EnchantTarget.HOE},
         maxLevel = 5

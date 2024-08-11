@@ -10,6 +10,7 @@ import info.preva1l.customenchants.events.PassiveEnchantTriggerEvent;
 import info.preva1l.customenchants.events.PassiveType;
 import info.preva1l.customenchants.listeners.ApplyListener;
 import info.preva1l.customenchants.listeners.PassiveEnchantsListener;
+import info.preva1l.customenchants.listeners.TableListener;
 import info.preva1l.customenchants.listeners.ToolListeners;
 import info.preva1l.customenchants.utils.TaskManager;
 import info.preva1l.customenchants.utils.commands.CommandManager;
@@ -48,7 +49,8 @@ public final class CustomEnchants extends JavaPlugin {
         Stream.of(
                 new ApplyListener(EnchantManager.getInstance()),
                 new ToolListeners(EnchantManager.getInstance()),
-                new PassiveEnchantsListener(EnchantManager.getInstance())
+                new PassiveEnchantsListener(EnchantManager.getInstance()),
+                new TableListener()
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
         TaskManager.Sync.runTask(() -> {

@@ -76,7 +76,7 @@ public abstract class PaginatedFastInv extends FastInv {
     }
 
     protected void paginationEmpty() {
-        setItems(new int[]{23},
+        setItems(new int[]{22},
                 new ItemBuilder(Material.BARRIER)
                         .name(Text.colorize("&c&lNo Enchants Found!"))
                         .build());

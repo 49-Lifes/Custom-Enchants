@@ -29,7 +29,7 @@ public class EnchantsRarityMenu extends FastInv {
         setItem(12, new ItemBuilder(Rarity.RARE.getMaterial())
                 .name(Text.colorize(Rarity.RARE.getColour() + "&l" + Rarity.RARE.getFriendlyName()))
                 .lore(Text.colorize("&7Click to view enchants.")).build(),
-                e -> new EnchantsListMenu((Player) e.getWhoClicked(), Rarity.UNCOMMON).open((Player) e.getWhoClicked()));
+                e -> new EnchantsListMenu((Player) e.getWhoClicked(), Rarity.RARE).open((Player) e.getWhoClicked()));
         setItem(13, new ItemBuilder(Rarity.EPIC.getMaterial())
                 .name(Text.colorize(Rarity.EPIC.getColour() + "&l" + Rarity.EPIC.getFriendlyName()))
                 .lore(Text.colorize("&7Click to view enchants.")).build(),

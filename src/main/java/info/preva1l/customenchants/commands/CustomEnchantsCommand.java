@@ -2,6 +2,7 @@ package info.preva1l.customenchants.commands;
 
 import info.preva1l.customenchants.CustomEnchants;
 import info.preva1l.customenchants.commands.subcommands.AdminSubCommand;
+import info.preva1l.customenchants.commands.subcommands.SetTableLocationCommand;
 import info.preva1l.customenchants.menus.EnchantsRarityMenu;
 import info.preva1l.customenchants.utils.Text;
 import info.preva1l.customenchants.utils.commands.BasicCommand;
@@ -14,6 +15,7 @@ public class CustomEnchantsCommand extends BasicCommand {
     public CustomEnchantsCommand(CustomEnchants plugin) {
         super(plugin);
         getSubCommands().add(new AdminSubCommand(plugin));
+        getSubCommands().add(new SetTableLocationCommand(plugin));
     }
 
     @Override

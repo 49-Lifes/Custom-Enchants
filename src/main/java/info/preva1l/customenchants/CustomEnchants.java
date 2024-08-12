@@ -50,7 +50,7 @@ public final class CustomEnchants extends JavaPlugin {
                 new ApplyListener(EnchantManager.getInstance()),
                 new ToolListeners(EnchantManager.getInstance()),
                 new PassiveEnchantsListener(EnchantManager.getInstance()),
-                new TableListener()
+                new TableListener(this)
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
         TaskManager.Sync.runTask(() -> {

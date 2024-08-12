@@ -21,12 +21,12 @@ public class SetTableLocationCommand extends BasicSubCommand {
         String world = loc.getWorld().getName();
         double locX = loc.getBlockX();
         double locY = loc.getBlockY();
-        double locZ = loc.getBlockX();
+        double locZ = loc.getBlockZ();
         plugin.getConfig().set("rune-table.x", locX);
         plugin.getConfig().set("rune-table.y", locY);
         plugin.getConfig().set("rune-table.z", locZ);
         plugin.getConfig().set("rune-table.world", world);
         plugin.saveConfig();
-        player.sendMessage(Text.colorize("&6&l49Lifes &fMonthly Crate Exit &aSuccessfully &fUpdated!"));
+        player.sendMessage(Text.colorize("&6&l49Lifes &fRune table &aSuccessfully &fUpdated!"));
     }
 }

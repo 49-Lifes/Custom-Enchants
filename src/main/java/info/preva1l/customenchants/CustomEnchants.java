@@ -34,6 +34,9 @@ public final class CustomEnchants extends JavaPlugin {
         instance = this;
         FastInvManager.register(this);
 
+        saveDefaultConfig();
+        reloadConfig();
+
         Stream.of(
                 new CustomEnchantsCommand(this)
         ).forEach(CommandManager.getInstance()::registerCommand);

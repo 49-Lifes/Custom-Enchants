@@ -1,5 +1,6 @@
 package info.preva1l.customenchants.enchants.impl.tools;
 
+import info.preva1l.customenchants.CustomEnchants;
 import info.preva1l.customenchants.EnchantManager;
 import info.preva1l.customenchants.enchants.CustomEnchant;
 import info.preva1l.customenchants.enchants.EnchantInfo;
@@ -30,8 +31,6 @@ public class TelekinesisEnchant extends CustomEnchant {
     private static final int LEVEL_THREE_CHANCE = 50;
     private static final int LEVEL_FOUR_CHANCE = 75;
     private static final int LEVEL_FIVE_CHANCE = 100;
-
-    private final Random random = new Random(42069);
 
     @Override
     public void trigger(Player player, ItemStack enchantedItem, Event callingEvent) {
@@ -71,7 +70,7 @@ public class TelekinesisEnchant extends CustomEnchant {
     }
 
     private boolean doProc(double percentage) {
-        double randomDouble = random.nextDouble();
+        double randomDouble = CustomEnchants.getRandom().nextDouble();
         return randomDouble < (percentage / 100);
     }
 }

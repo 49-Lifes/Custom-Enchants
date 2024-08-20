@@ -1,12 +1,20 @@
 package info.preva1l.customenchants.enchants.impl.sword;
 
+import info.preva1l.customenchants.CustomEnchants;
+import info.preva1l.customenchants.EnchantManager;
 import info.preva1l.customenchants.enchants.CustomEnchant;
 import info.preva1l.customenchants.enchants.EnchantInfo;
 import info.preva1l.customenchants.enchants.EnchantTarget;
 import info.preva1l.customenchants.enchants.Rarity;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+
+import java.util.List;
+import java.util.Map;
 
 @EnchantInfo(
         id = "trickster",
@@ -17,8 +25,51 @@ import org.bukkit.inventory.ItemStack;
         maxLevel = 4
 )
 public class TricksterEnchant extends CustomEnchant {
+    private static final double LEVEL_ONE_CHANCE = 2.5;
+    private static final double LEVEL_TWO_CHANCE = 4;
+    private static final double LEVEL_THREE_CHANCE = 6;
+    private static final double LEVEL_FOUR_CHANCE = 10;
+    private static final double LEVEL_FIVE_CHANCE = 13.5;
+
     @Override
     public void trigger(Player player, ItemStack enchantedItem, Event callingEvent) {
+        if (!(callingEvent instanceof BlockBreakEvent event)) return;
+        int level = EnchantManager.getInstance().getLevelFromItemStack(this, enchantedItem);
 
+        Block block = event.getBlock();
+
+        double percentage = switch (level) {
+            case 1:
+                yield LEVEL_ONE_CHANCE;
+            case 2:
+                yield LEVEL_TWO_CHANCE;
+            case 3:
+                yield LEVEL_THREE_CHANCE;
+            case 4:
+                yield LEVEL_FOUR_CHANCE;
+            case 5:
+                yield LEVEL_FIVE_CHANCE;
+            default:
+                throw new IllegalStateException("Telekinesis Max Level is %s".formatted(getMaxLevel()));
+        };
+
+        if (!doProc(percentage)) return;
+
+        event.setDropItems(false);
+        List<ItemStack> drops = event.getBlock().getDrops(enchantedItem, player).stream().toList();
+
+        PlayerInventory inventory = player.getInventory();
+        Map<Integer, ItemStack> leftOvers = inventory.addItem(drops.toArray(new ItemStack[]{}));
+        if (leftOvers.isEmpty()) {
+            return;
+        }
+        for (ItemStack itemStack : leftOvers.values()) {
+            block.getWorld().dropItemNaturally(block.getLocation(), itemStack);
+        }
+    }
+
+    private boolean doProc(double percentage) {
+        double randomDouble = CustomEnchants.getRandom().nextDouble();
+        return randomDouble < (percentage / 100);
     }
 }

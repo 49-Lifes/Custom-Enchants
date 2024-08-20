@@ -24,10 +24,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public final class CustomEnchants extends JavaPlugin {
     @Getter private static CustomEnchants instance;
+
+    @Getter private static final Random random = new Random(System.currentTimeMillis());
 
     @Override
     public void onEnable() {
